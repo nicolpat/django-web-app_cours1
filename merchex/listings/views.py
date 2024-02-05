@@ -5,30 +5,15 @@ from listings.models import Band, Title
 
 def hello(request):
     bands = Band.objects.all()
-    return HttpResponse(f"""
-        <h1>Hello Django !</h1>
-        <p>Mes groupes préférés sont :<p>
-        <ul>
-            <li>{bands[0].name}</li>
-            <li>{bands[1].name}</li>
-            <li>{bands[2].name}</li>
-        </ul>
-    """)
+    return render(request, 'listings/hello.html',context={'bands': bands})
 
 def about(request):
-    return HttpResponse('<h1>À propos</h1> <p>Nous adorons merch !</p>')
+    return render(request, 'listings/about.html')
 
 def listings(request):
     titles = Title.objects.all()
-    return HttpResponse(f"""
-            <h1>Liste !</h1>
-            <p>Les evenements à venir sont :<p>
-            <ul>
-                <li>{titles[0].name}</li>
-                <li>{titles[1].name}</li>
-                <li>{titles[2].name}</li>
-            </ul>
-    """)
+    return render(request, 'listings/listings.html', context={'titles': titles})
+
 
 def contact(request):
-    return HttpResponse('<h1>Contact</h1> <p></p>')
+    return render(request, 'listings/contact.html')

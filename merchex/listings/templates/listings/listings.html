@@ -1,0 +1,14 @@
+<html>
+    <head><title>Merchex</title></head>
+    <body>
+        <h1>Annonces</h1>
+        <p>Il y a {{ titles|length }} annonces.
+        </p>
+        <p>Les voici :</p>
+        <ul>
+            {% for title in titles %}
+            <li>{{ title.name }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
